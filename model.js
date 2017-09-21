@@ -5,9 +5,9 @@ var userSchema = new Schema({
     name: String,
     problem: String,
     gender: String,
-    doctor: String,
+    doc: String,
     day: String
 })
 
-var patientData = mongoose.model("Patient", userSchema)
-module.exports = patientData;
+var PatientsData = mongoose.model("Patient", userSchema)
+module.exports = PatientsData;

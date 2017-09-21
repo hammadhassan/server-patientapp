@@ -2,9 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const bodyparser = require('body-parser')
-const patientData = require('./model')
+const PatientsData = require('./model')
 
-// mongoose.connect('mogodb://localhost/users' )
 mongoose.connect("mongodb://hammad:123456@ds141514.mlab.com:41514/patientapp-server" ,{
     useMongoClient : true
 })
@@ -20,16 +19,15 @@ app.get('/', function(req, res, next) {
     res.send('/ pathe success')
 })
 
-app.get('/api', function(req, res, next) {
-    patientData.find({})
+app.get('/details', function(req, res, next) {
+    PatientsData.find({})
     .then((data)=>{
         res.send(data)
     })
 })
 
-app.post('/api/addName', function(req, res, next) {
-
-patientData.create(req.body)
+app.post('/addpatient', function(req, res, next) {
+    PatientsData.create(req.body)
     .then((data)=>{
         console.log(req.body)
         res.send('success ==>'+ data);
